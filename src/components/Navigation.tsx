@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Menu, X, Calculator, BarChart2, TrendingUp, Users, Activity, Briefcase, LineChart, Zap } from 'lucide-react';
+import { Menu, X, Calculator, BarChart2, TrendingUp, Activity, Briefcase, LineChart, Zap } from 'lucide-react';
 
 interface NavigationItem {
   name: string;
@@ -46,20 +46,14 @@ const navigationItems: NavigationItem[] = [
   
   // Journey/Experience
   { 
-    name: 'Client Journey', 
-    path: '/day-in-life', 
-    icon: <Users size={20} />,
-    category: 'journey'
-  },
-  { 
     name: 'Personalized Journey', 
     path: '/personalized-journey', 
     icon: <Zap size={20} />,
     category: 'journey'
   },
   { 
-    name: 'Business Journey', 
-    path: '/interactive-business-journey', 
+    name: 'Success Stories', 
+    path: '/success-stories', 
     icon: <Briefcase size={20} />,
     category: 'journey'
   }

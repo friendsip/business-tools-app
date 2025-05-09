@@ -67,7 +67,7 @@ const Dashboard: React.FC = () => {
       <div className="text-center mb-12">
         <h1 className="text-4xl font-bold text-white mb-4">Business Advisory Tools</h1>
         <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-          Explore our comprehensive suite of interactive tools designed to help you assess, 
+          Explore our comprehensive suite of interactive tools designed to help you assess,
           plan, and optimize your business journey
         </p>
       </div>
@@ -90,6 +90,11 @@ const Dashboard: React.FC = () => {
             </div>
           </Link>
         ))}
+      </div>
+
+      <div className="py-4 mt-12 text-center text-slate-400 text-sm">
+        <p>To make this into a full prototype app go to <a href="https://blinkprototype.com" className="text-blue-500 hover:text-blue-400">BlinkPrototype_</a></p>
+        <p>©2025 <a href="https://www.clouddev.group" className="text-blue-500 hover:text-blue-400">Cloud Development Group Limited</a>. All rights reserved.</p>
       </div>
     </div>
   );

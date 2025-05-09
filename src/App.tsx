@@ -9,9 +9,8 @@ const BusinessDiagnostic = lazy(() => import('./components/BusinessDiagnostic'))
 const MarketPulse = lazy(() => import('./components/MarketPulse'));
 const DealFlow = lazy(() => import('./components/DealFlow'));
 const IndustryComparison = lazy(() => import('./components/IndustryComparison'));
-const DayInLife = lazy(() => import('./components/DayInLife'));
 const PersonalizedJourney = lazy(() => import('./components/PersonalizedJourney'));
-const InteractiveBusinessJourney = lazy(() => import('./components/InteractiveBusinessJourney'));
+const SuccessStories = lazy(() => import('./components/SuccessStories'));
 
 const LoadingFallback = () => (
   <div className="flex items-center justify-center min-h-screen">
@@ -33,11 +32,14 @@ const App: React.FC = () => {
               <Route path="/market-pulse" element={<MarketPulse />} />
               <Route path="/deal-flow" element={<DealFlow />} />
               <Route path="/industry-comparison" element={<IndustryComparison />} />
-              <Route path="/day-in-life" element={<DayInLife />} />
               <Route path="/personalized-journey" element={<PersonalizedJourney />} />
-              <Route path="/interactive-business-journey" element={<InteractiveBusinessJourney />} />
+              <Route path="/success-stories" element={<SuccessStories />} />
             </Routes>
           </Suspense>
+          <div className="py-4 px-6 mt-8 text-center text-slate-400 text-sm">
+            <p>To make this into a full prototype app go to <a href="https://blinkprototype.com" className="text-blue-500 hover:text-blue-400">BlinkPrototype_</a></p>
+            <p>©2025 <a href="https://www.clouddev.group" className="text-blue-500 hover:text-blue-400">Cloud Development Group Limited</a>. All rights reserved.</p>
+          </div>
         </div>
       </div>
     </BrowserRouter>

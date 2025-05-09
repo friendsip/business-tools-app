@@ -14,6 +14,11 @@ const DayInLife: React.FC = () => {
         <p className="text-lg text-slate-300 mb-4">This component is currently being implemented.</p>
         <p className="text-slate-400">The Client Journey Experience will guide you through the typical stages of an M&A transaction, from initial consultation through to deal completion.</p>
       </div>
+
+      <div className="py-4 mt-8 text-center text-slate-400 text-sm">
+        <p>To make this into a full prototype app go to <a href="https://blinkprototype.com" className="text-blue-500 hover:text-blue-400">BlinkPrototype_</a></p>
+        <p>©2025 <a href="https://www.clouddev.group" className="text-blue-500 hover:text-blue-400">Cloud Development Group Limited</a>. All rights reserved.</p>
+      </div>
     </div>
   );
 };

@@ -105,38 +105,38 @@ const BusinessValueCalculator = () => {
   return (
     <div className="w-full bg-slate-900 text-white p-6 rounded-lg shadow-lg max-w-4xl mx-auto">
       <h2 className="text-2xl font-bold mb-6 text-center">Business Value Calculator</h2>
-      
+
       {/* Progress indicator */}
       <div className="flex justify-between mb-8 relative">
         <div className="absolute h-1 bg-slate-700 top-4 left-0 right-0 z-0"></div>
-        
+
         {[1, 2, 3].map((stepNumber) => (
           <div key={stepNumber} className="z-10 flex flex-col items-center">
-            <div 
+            <div
               className={`w-8 h-8 rounded-full flex items-center justify-center mb-2
                 ${step >= stepNumber ? 'bg-blue-600' : 'bg-slate-700'}`}
             >
               {stepNumber}
             </div>
             <span className="text-sm text-slate-400">
-              {stepNumber === 1 ? 'Business Details' : 
+              {stepNumber === 1 ? 'Business Details' :
                stepNumber === 2 ? 'Financial Information' : 'Valuation Results'}
             </span>
           </div>
         ))}
       </div>
-      
+
       <div className="bg-slate-800 p-6 rounded-lg">
         {/* Step 1: Business Details */}
         {step === 1 && (
           <div className="space-y-6">
             <h3 className="text-xl font-semibold mb-4">Tell us about your business</h3>
-            
+
             <div className="space-y-4">
               <div>
                 <label className="block text-slate-300 mb-2">Industry Sector</label>
-                <select 
-                  name="industry" 
+                <select
+                  name="industry"
                   value={formData.industry}
                   onChange={handleChange}
                   className="w-full bg-slate-700 border border-slate-600 rounded-lg p-3 text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -149,7 +149,7 @@ const BusinessValueCalculator = () => {
                   <option value="services">Professional Services</option>
                 </select>
               </div>
-              
+
               <div>
                 <label className="block text-slate-300 mb-2">Years in Operation</label>
                 <input
@@ -167,7 +167,7 @@ const BusinessValueCalculator = () => {
                   <span>20+ years</span>
                 </div>
               </div>
-              
+
               <div>
                 <label className="block text-slate-300 mb-2">Number of Employees</label>
                 <input
@@ -186,9 +186,9 @@ const BusinessValueCalculator = () => {
                 </div>
               </div>
             </div>
-            
+
             <div className="pt-4">
-              <button 
+              <button
                 onClick={nextStep}
                 disabled={!formData.industry}
                 className={`w-full py-3 rounded-lg font-medium flex items-center justify-center
@@ -199,12 +199,12 @@ const BusinessValueCalculator = () => {
             </div>
           </div>
         )}
-        
+
         {/* Step 2: Financial Information */}
         {step === 2 && (
           <div className="space-y-6">
             <h3 className="text-xl font-semibold mb-4">Financial Information</h3>
-            
+
             <div className="space-y-6">
               <div>
                 <label className="block text-slate-300 mb-2">
@@ -226,7 +226,7 @@ const BusinessValueCalculator = () => {
                   Current: {formatCurrency(formData.revenue)}
                 </div>
               </div>
-              
+
               <div>
                 <label className="block text-slate-300 mb-2">
                   Annual EBITDA <span className="text-slate-400 text-sm">(£)</span>
@@ -247,7 +247,7 @@ const BusinessValueCalculator = () => {
                   Current: {formatCurrency(formData.ebitda)} ({((formData.ebitda / formData.revenue) * 100).toFixed(1)}% margin)
                 </div>
               </div>
-              
+
               <div>
                 <label className="block text-slate-300 mb-2">Annual Growth Rate (%)</label>
                 <input
@@ -266,16 +266,16 @@ const BusinessValueCalculator = () => {
                 </div>
               </div>
             </div>
-            
+
             <div className="pt-4 flex justify-between">
-              <button 
+              <button
                 onClick={prevStep}
                 className="py-3 px-6 bg-slate-700 hover:bg-slate-600 rounded-lg font-medium"
               >
                 Back
               </button>
-              
-              <button 
+
+              <button
                 onClick={nextStep}
                 className="py-3 px-6 bg-blue-600 hover:bg-blue-700 rounded-lg font-medium"
               >
@@ -284,12 +284,12 @@ const BusinessValueCalculator = () => {
             </div>
           </div>
         )}
-        
+
         {/* Step 3: Results */}
         {step === 3 && valuation && (
           <div>
             <h3 className="text-xl font-semibold mb-6">Your Business Valuation</h3>
-            
+
             <div className="bg-slate-900 p-6 rounded-lg mb-8 border border-blue-500/30">
               <div className="text-center">
                 <div className="text-slate-400 mb-1">Estimated Business Value</div>
@@ -300,7 +300,7 @@ const BusinessValueCalculator = () => {
                   Based on {formData.industry} industry benchmarks
                 </div>
               </div>
-              
+
               <div className="grid grid-cols-2 gap-4 mt-6">
                 <div className="bg-slate-800 p-3 rounded-lg">
                   <div className="text-sm text-slate-400">EBITDA Multiple</div>
@@ -312,7 +312,7 @@ const BusinessValueCalculator = () => {
                 </div>
               </div>
             </div>
-            
+
             <div className="mb-8">
               <h4 className="font-medium mb-3">5-Year Projection</h4>
               <div className="bg-slate-800 p-4 rounded-lg" style={{ height: '240px' }}>
@@ -321,22 +321,22 @@ const BusinessValueCalculator = () => {
                     <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
                     <XAxis dataKey="year" stroke="#94a3b8" />
                     <YAxis stroke="#94a3b8" tickFormatter={(value) => `£${value/1000000}M`} />
-                    <Tooltip 
+                    <Tooltip
                       formatter={(value) => [`${formatCurrency(value as number)}`, '']}
                       labelFormatter={(value) => `Year: ${value}`}
                       contentStyle={{ backgroundColor: '#1e293b', border: 'none' }}
                     />
-                    <Line 
-                      type="monotone" 
-                      dataKey="value" 
-                      stroke="#3b82f6" 
+                    <Line
+                      type="monotone"
+                      dataKey="value"
+                      stroke="#3b82f6"
                       strokeWidth={3}
                       name="Business Value"
                     />
-                    <Line 
-                      type="monotone" 
-                      dataKey="revenue" 
-                      stroke="#10b981" 
+                    <Line
+                      type="monotone"
+                      dataKey="revenue"
+                      stroke="#10b981"
                       strokeWidth={2}
                       name="Revenue"
                     />
@@ -344,7 +344,7 @@ const BusinessValueCalculator = () => {
                 </ResponsiveContainer>
               </div>
             </div>
-            
+
             <div className="mb-8">
               <h4 className="font-medium mb-3">Key Value Drivers</h4>
               <div className="space-y-3">
@@ -363,7 +363,7 @@ const BusinessValueCalculator = () => {
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center bg-slate-800 p-3 rounded-lg">
                   <div className="p-2 bg-blue-500/20 rounded-lg mr-3">
                     <DollarSign size={18} className="text-blue-500" />
@@ -379,7 +379,7 @@ const BusinessValueCalculator = () => {
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center bg-slate-800 p-3 rounded-lg">
                   <div className="p-2 bg-emerald-500/20 rounded-lg mr-3">
                     <Award size={18} className="text-emerald-500" />
@@ -397,16 +397,16 @@ const BusinessValueCalculator = () => {
                 </div>
               </div>
             </div>
-            
+
             <div className="grid grid-cols-2 gap-4">
-              <button 
+              <button
                 onClick={prevStep}
                 className="py-3 bg-slate-700 hover:bg-slate-600 rounded-lg font-medium"
               >
                 Adjust Inputs
               </button>
-              
-              <button 
+
+              <button
                 className="py-3 bg-blue-600 hover:bg-blue-700 rounded-lg font-medium"
               >
                 Speak to an Advisor
@@ -414,6 +414,11 @@ const BusinessValueCalculator = () => {
             </div>
           </div>
         )}
+      </div>
+
+      <div className="py-4 mt-8 text-center text-slate-400 text-sm">
+        <p>To make this into a full prototype app go to <a href="https://blinkprototype.com" className="text-blue-500 hover:text-blue-400">BlinkPrototype_</a></p>
+        <p>©2025 <a href="https://www.clouddev.group" className="text-blue-500 hover:text-blue-400">Cloud Development Group Limited</a>. All rights reserved.</p>
       </div>
     </div>
   );

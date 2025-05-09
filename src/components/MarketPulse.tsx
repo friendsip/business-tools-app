@@ -198,14 +198,14 @@ const MarketPulseDashboard: React.FC = () => {
             <h2 className="text-2xl font-bold mb-1">M&A Market Pulse</h2>
             <p className="text-blue-100">Live market trends and activity dashboard</p>
           </div>
-          
+
           <div className="flex items-center mt-4 md:mt-0">
             <RefreshCw size={14} className="mr-2 text-blue-200" />
             <span className="text-sm text-blue-200">Last updated: Today, 10:45 AM</span>
           </div>
         </div>
       </div>
-      
+
       <div className="p-6">
         {/* Controls */}
         <div className="flex flex-wrap gap-4 mb-8">
@@ -216,8 +216,8 @@ const MarketPulseDashboard: React.FC = () => {
                 <button
                   key={option.id}
                   className={`px-4 py-1.5 rounded-md text-sm transition-colors
-                            ${activeTimeframe === option.id 
-                              ? 'bg-blue-600 text-white' 
+                            ${activeTimeframe === option.id
+                              ? 'bg-blue-600 text-white'
                               : 'text-slate-300 hover:bg-slate-700'}`}
                   onClick={() => setActiveTimeframe(option.id)}
                 >
@@ -226,7 +226,7 @@ const MarketPulseDashboard: React.FC = () => {
               ))}
             </div>
           </div>
-          
+
           <div>
             <div className="text-sm text-slate-400 mb-2">Sector Focus</div>
             <div className="flex bg-slate-800 rounded-lg p-1">
@@ -234,8 +234,8 @@ const MarketPulseDashboard: React.FC = () => {
                 <button
                   key={option.id}
                   className={`px-4 py-1.5 rounded-md text-sm transition-colors
-                            ${sectorFilter === option.id 
-                              ? 'bg-blue-600 text-white' 
+                            ${sectorFilter === option.id
+                              ? 'bg-blue-600 text-white'
                               : 'text-slate-300 hover:bg-slate-700'}`}
                   onClick={() => setSectorFilter(option.id)}
                 >
@@ -245,7 +245,7 @@ const MarketPulseDashboard: React.FC = () => {
             </div>
           </div>
         </div>
-        
+
         {/* Top metrics */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           <div className="bg-slate-800 rounded-lg p-5">
@@ -267,7 +267,7 @@ const MarketPulseDashboard: React.FC = () => {
               <span>{currentSectorData.change >= 0 ? '+' : ''}{currentSectorData.change.toFixed(1)}x YTD</span>
             </div>
           </div>
-          
+
           <div className="bg-slate-800 rounded-lg p-5">
             <div className="flex items-center mb-4">
               <div className="p-3 bg-emerald-500/20 rounded-lg mr-3">
@@ -282,7 +282,7 @@ const MarketPulseDashboard: React.FC = () => {
               <span className="text-slate-400">{currentSectorData.activeAcquirers} active acquirers</span>
             </div>
           </div>
-          
+
           <div className="bg-slate-800 rounded-lg p-5">
             <div className="flex items-center mb-4">
               <div className="p-3 bg-amber-500/20 rounded-lg mr-3">
@@ -302,7 +302,7 @@ const MarketPulseDashboard: React.FC = () => {
               <span>{dealVolumeChange >= 0 ? '+' : ''}{dealVolumeChange.toFixed(1)}% MoM</span>
             </div>
           </div>
-          
+
           <div className="bg-slate-800 rounded-lg p-5">
             <div className="flex items-center mb-4">
               <div className="p-3 bg-rose-500/20 rounded-lg mr-3">
@@ -323,7 +323,7 @@ const MarketPulseDashboard: React.FC = () => {
             </div>
           </div>
         </div>
-        
+
         {/* Charts */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
           <div className="bg-slate-800 p-5 rounded-lg">
@@ -343,22 +343,22 @@ const MarketPulseDashboard: React.FC = () => {
                   <XAxis dataKey="month" />
                   <YAxis />
                   <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#334155" />
-                  <Tooltip 
+                  <Tooltip
                     contentStyle={{ backgroundColor: '#1e293b', border: 'none' }}
                     formatter={(value) => [`${value} deals`, 'Volume']}
                   />
-                  <Area 
-                    type="monotone" 
-                    dataKey="deals" 
-                    stroke="#3b82f6" 
-                    fillOpacity={1} 
-                    fill="url(#colorDeals)" 
+                  <Area
+                    type="monotone"
+                    dataKey="deals"
+                    stroke="#3b82f6"
+                    fillOpacity={1}
+                    fill="url(#colorDeals)"
                   />
                 </AreaChart>
               </ResponsiveContainer>
             </div>
           </div>
-          
+
           <div className="bg-slate-800 p-5 rounded-lg">
             <h3 className="text-lg font-bold mb-4">Valuation Multiple Trend</h3>
             <div className="h-64">
@@ -370,14 +370,14 @@ const MarketPulseDashboard: React.FC = () => {
                   <XAxis dataKey="month" />
                   <YAxis domain={['dataMin - 0.5', 'dataMax + 0.5']} />
                   <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#334155" />
-                  <Tooltip 
+                  <Tooltip
                     contentStyle={{ backgroundColor: '#1e293b', border: 'none' }}
                     formatter={(value) => [`${value}x`, 'EBITDA Multiple']}
                   />
-                  <Line 
-                    type="monotone" 
-                    dataKey="avgMultiple" 
-                    stroke="#10b981" 
+                  <Line
+                    type="monotone"
+                    dataKey="avgMultiple"
+                    stroke="#10b981"
                     strokeWidth={3}
                     dot={{ fill: '#10b981', r: 6 }}
                     activeDot={{ r: 8 }}
@@ -387,7 +387,7 @@ const MarketPulseDashboard: React.FC = () => {
             </div>
           </div>
         </div>
-        
+
         {/* Recent deals and hot sectors */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
           <div className="col-span-2 bg-slate-800 rounded-lg p-5">
@@ -422,15 +422,15 @@ const MarketPulseDashboard: React.FC = () => {
               </table>
             </div>
           </div>
-          
+
           <div className="bg-slate-800 rounded-lg p-5">
             <h3 className="text-lg font-bold mb-4">Hot Sectors</h3>
             <div className="space-y-4 mb-6">
               {currentSectorData.hotSectors.map((sector, index) => (
                 <div key={index} className="flex items-center">
                   <div className={`w-10 h-10 rounded-full flex items-center justify-center mr-3
-                                 ${index === 0 ? 'bg-amber-500/20 text-amber-400' : 
-                                   index === 1 ? 'bg-blue-500/20 text-blue-400' : 
+                                 ${index === 0 ? 'bg-amber-500/20 text-amber-400' :
+                                   index === 1 ? 'bg-blue-500/20 text-blue-400' :
                                    'bg-emerald-500/20 text-emerald-400'}`}
                   >
                     {index + 1}
@@ -438,15 +438,15 @@ const MarketPulseDashboard: React.FC = () => {
                   <div>
                     <div className="font-medium">{sector}</div>
                     <div className="text-sm text-slate-400">
-                      {index === 0 ? 'High demand, strong multiples' : 
-                       index === 1 ? 'Growing interest, active buyers' : 
+                      {index === 0 ? 'High demand, strong multiples' :
+                       index === 1 ? 'Growing interest, active buyers' :
                        'Emerging opportunity'}
                     </div>
                   </div>
                 </div>
               ))}
             </div>
-            
+
             <div className="h-48 mt-8">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart
@@ -458,7 +458,7 @@ const MarketPulseDashboard: React.FC = () => {
                 >
                   <XAxis dataKey="name" />
                   <YAxis />
-                  <Tooltip 
+                  <Tooltip
                     contentStyle={{ backgroundColor: '#1e293b', border: 'none' }}
                     formatter={(value) => [formatCurrency(value as number), 'Total Value']}
                   />
@@ -468,17 +468,17 @@ const MarketPulseDashboard: React.FC = () => {
             </div>
           </div>
         </div>
-        
+
         {/* Market trends */}
         <div className="bg-slate-800 rounded-lg p-5">
           <h3 className="text-lg font-bold mb-4">Key Market Trends</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {currentSectorData.keyTrends.map((trend, index) => (
-              <div 
-                key={index} 
-                className={`p-4 rounded-lg border-l-4 
-                          ${trend.impact === 'positive' ? 'border-emerald-500 bg-emerald-500/10' : 
-                            trend.impact === 'negative' ? 'border-rose-500 bg-rose-500/10' : 
+              <div
+                key={index}
+                className={`p-4 rounded-lg border-l-4
+                          ${trend.impact === 'positive' ? 'border-emerald-500 bg-emerald-500/10' :
+                            trend.impact === 'negative' ? 'border-rose-500 bg-rose-500/10' :
                             'border-amber-500 bg-amber-500/10'}`}
               >
                 <div className="flex items-center">
@@ -491,6 +491,11 @@ const MarketPulseDashboard: React.FC = () => {
             ))}
           </div>
         </div>
+      </div>
+
+      <div className="py-4 mt-8 text-center text-slate-400 text-sm">
+        <p>To make this into a full prototype app go to <a href="https://blinkprototype.com" className="text-blue-500 hover:text-blue-400">BlinkPrototype_</a></p>
+        <p>©2025 <a href="https://www.clouddev.group" className="text-blue-500 hover:text-blue-400">Cloud Development Group Limited</a>. All rights reserved.</p>
       </div>
     </div>
   );

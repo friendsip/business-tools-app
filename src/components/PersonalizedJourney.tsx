@@ -1,27 +1,34 @@
 import React, { useState } from 'react';
 import { ArrowRight, Check, Clock, User, DollarSign, ChevronRight, Info } from 'lucide-react';
 
+// Define types for our content structure
+interface Service {
+  id: number;
+  title: string;
+  description: string;
+}
+
+interface CaseStudy {
+  id: number;
+  title: string;
+  description: string;
+}
+
+interface Resource {
+  id: number;
+  title: string;
+  type: string;
+}
+
 interface PersonalizedContent {
   title: string;
   description: string;
-  services: Array<{
-    id: number;
-    title: string;
-    description: string;
-  }>;
-  caseStudies: Array<{
-    id: number;
-    title: string;
-    description: string;
-  }>;
-  resources: Array<{
-    id: number;
-    title: string;
-    type: string;
-  }>;
+  services: Service[];
+  caseStudies: CaseStudy[];
+  resources: Resource[];
 }
 
-const PersonalizedJourney: React.FC = () => {
+const PersonalizedJourney = () => {
   const [businessStage, setBusinessStage] = useState<string | null>(null);
   const [businessSize, setBusinessSize] = useState<string | null>(null);
   const [businessGoal, setBusinessGoal] = useState<string | null>(null);
@@ -216,23 +223,23 @@ const PersonalizedJourney: React.FC = () => {
   const personalizedContent = getPersonalizedContent();
 
   return (
-    <div className="w-full bg-slate-900 text-white rounded-lg overflow-hidden max-w-7xl mx-auto">
+    <div className="w-full bg-slate-900 text-white rounded-lg overflow-hidden">
       {!showContent ? (
         <div className="p-8">
           <h2 className="text-3xl font-bold mb-2 text-center">Your Business Journey</h2>
           <p className="text-slate-400 text-center mb-8">Tell us about your business to receive personalized guidance</p>
-          
+
           <div className="max-w-2xl mx-auto">
             {/* Business Stage Selection */}
             <div className="mb-8">
-              <h3 className="text-xl font-semibold mb-4">1. Where are you in your business journey?</h3>
+              <h3 className="text-xl font-semibold mb-4">1. Where are you in your Business Journey?</h3>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 {stageOptions.map(option => (
                   <button
                     key={option.id}
                     className={`p-4 rounded-lg border-2 transition-all flex flex-col items-center text-center
-                              ${businessStage === option.id 
-                                ? 'border-blue-500 bg-blue-500/10' 
+                              ${businessStage === option.id
+                                ? 'border-blue-500 bg-blue-500/10'
                                 : 'border-slate-700 hover:border-slate-500 bg-slate-800'}`}
                     onClick={() => setBusinessStage(option.id)}
                   >
@@ -244,7 +251,7 @@ const PersonalizedJourney: React.FC = () => {
                 ))}
               </div>
             </div>
-            
+
             {/* Business Size Selection */}
             {businessStage && (
               <div className="mb-8">
@@ -254,8 +261,8 @@ const PersonalizedJourney: React.FC = () => {
                     <button
                       key={option.id}
                       className={`p-4 rounded-lg border-2 transition-all
-                                ${businessSize === option.id 
-                                  ? 'border-blue-500 bg-blue-500/10' 
+                                ${businessSize === option.id
+                                  ? 'border-blue-500 bg-blue-500/10'
                                   : 'border-slate-700 hover:border-slate-500 bg-slate-800'}`}
                       onClick={() => setBusinessSize(option.id)}
                     >
@@ -268,7 +275,7 @@ const PersonalizedJourney: React.FC = () => {
                 </div>
               </div>
             )}
-            
+
             {/* Business Goal Selection */}
             {businessSize && (
               <div className="mb-8">
@@ -278,8 +285,8 @@ const PersonalizedJourney: React.FC = () => {
                     <button
                       key={option.id}
                       className={`p-4 rounded-lg border-2 transition-all flex flex-col items-center text-center
-                                ${businessGoal === option.id 
-                                  ? 'border-blue-500 bg-blue-500/10' 
+                                ${businessGoal === option.id
+                                  ? 'border-blue-500 bg-blue-500/10'
                                   : 'border-slate-700 hover:border-slate-500 bg-slate-800'}`}
                       onClick={() => setBusinessGoal(option.id)}
                     >
@@ -292,7 +299,7 @@ const PersonalizedJourney: React.FC = () => {
                 </div>
               </div>
             )}
-            
+
             {/* Action buttons */}
             {businessGoal && (
               <div className="flex justify-center mt-6">
@@ -311,6 +318,11 @@ const PersonalizedJourney: React.FC = () => {
               </div>
             )}
           </div>
+
+          <div className="py-4 mt-8 text-center text-slate-400 text-sm">
+            <p>To make this into a full prototype app go to <a href="https://blinkprototype.com" className="text-blue-500 hover:text-blue-400">BlinkPrototype_</a></p>
+            <p>©2025 <a href="https://www.clouddev.group" className="text-blue-500 hover:text-blue-400">Cloud Development Group Limited</a>. All rights reserved.</p>
+          </div>
         </div>
       ) : (
         <div>
@@ -325,7 +337,7 @@ const PersonalizedJourney: React.FC = () => {
                   <ArrowRight size={16} className="mr-1 transform rotate-180" />
                   Change selections
                 </button>
-                
+
                 <div className="flex space-x-2">
                   <span className="px-3 py-1 bg-white/20 rounded-full text-xs">
                     {stageOptions.find(o => o.id === businessStage)?.label}
@@ -338,12 +350,12 @@ const PersonalizedJourney: React.FC = () => {
                   </span>
                 </div>
               </div>
-              
+
               <h1 className="text-3xl font-bold mb-4">{personalizedContent.title}</h1>
               <p className="text-lg text-white/90">{personalizedContent.description}</p>
             </div>
           </div>
-          
+
           <div className="p-8 max-w-4xl mx-auto">
             {/* Services section */}
             <div className="mb-12">
@@ -360,7 +372,7 @@ const PersonalizedJourney: React.FC = () => {
                 ))}
               </div>
             </div>
-            
+
             {/* Case studies */}
             <div className="mb-12">
               <h2 className="text-2xl font-bold mb-6">Relevant Case Studies</h2>
@@ -368,6 +380,7 @@ const PersonalizedJourney: React.FC = () => {
                 {personalizedContent.caseStudies.map(caseStudy => (
                   <div key={caseStudy.id} className="bg-slate-800 rounded-lg overflow-hidden group">
                     <div className="h-40 bg-slate-700 relative overflow-hidden">
+                      <img src="/api/placeholder/400/240" alt={caseStudy.title} className="w-full h-full object-cover" />
                       <div className="absolute inset-0 bg-blue-600/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                     </div>
                     <div className="p-4">
@@ -381,7 +394,7 @@ const PersonalizedJourney: React.FC = () => {
                 ))}
               </div>
             </div>
-            
+
             {/* Resources */}
             <div className="mb-8">
               <h2 className="text-2xl font-bold mb-6">Recommended Resources</h2>
@@ -401,7 +414,7 @@ const PersonalizedJourney: React.FC = () => {
                 ))}
               </div>
             </div>
-            
+
             {/* CTA */}
             <div className="mt-12 bg-gradient-to-r from-blue-600/20 to-indigo-600/20 rounded-xl p-8 text-center">
               <h2 className="text-2xl font-bold mb-4">Ready to take the next step?</h2>
@@ -411,6 +424,11 @@ const PersonalizedJourney: React.FC = () => {
               <button className="px-8 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg font-medium transition-colors">
                 Schedule a Consultation
               </button>
+            </div>
+
+            <div className="py-4 mt-8 text-center text-slate-400 text-sm">
+              <p>To make this into a full prototype app go to <a href="https://blinkprototype.com" className="text-blue-500 hover:text-blue-400">BlinkPrototype_</a></p>
+              <p>©2025 <a href="https://www.clouddev.group" className="text-blue-500 hover:text-blue-400">Cloud Development Group Limited</a>. All rights reserved.</p>
             </div>
           </div>
         </div>

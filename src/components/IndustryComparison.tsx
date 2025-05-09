@@ -339,7 +339,7 @@ const IndustryComparisonTool = () => {
         <h2 className="text-2xl font-bold mb-2">Industry Comparison Tool</h2>
         <p className="text-blue-100">Compare key metrics across industries to benchmark your business</p>
       </div>
-      
+
       <div className="p-6">
         {/* Control panel */}
         <div className="bg-slate-800 p-4 rounded-lg mb-8">
@@ -352,17 +352,17 @@ const IndustryComparisonTool = () => {
                   <button
                     key={id}
                     className={`px-3 py-2 rounded-lg text-xs flex items-center justify-between transition-colors
-                              ${selectedIndustries.includes(id) 
-                                ? `bg-${industry.color.replace('#', '')}/20 border border-${industry.color.replace('#', '')}/40` 
+                              ${selectedIndustries.includes(id)
+                                ? `bg-${industry.color.replace('#', '')}/20 border border-${industry.color.replace('#', '')}/40`
                                 : 'bg-slate-700 hover:bg-slate-600'}`}
                     onClick={() => handleIndustrySelection(id)}
-                    style={{ 
-                      backgroundColor: selectedIndustries.includes(id) 
-                        ? `${industry.color}20` 
+                    style={{
+                      backgroundColor: selectedIndustries.includes(id)
+                        ? `${industry.color}20`
                         : '',
-                      borderColor: selectedIndustries.includes(id) 
-                        ? `${industry.color}40` 
-                        : '' 
+                      borderColor: selectedIndustries.includes(id)
+                        ? `${industry.color}40`
+                        : ''
                     }}
                   >
                     <span>{industry.name}</span>
@@ -373,7 +373,7 @@ const IndustryComparisonTool = () => {
                 ))}
               </div>
             </div>
-            
+
             {/* Metric selection */}
             <div>
               <h3 className="text-sm font-medium text-slate-400 mb-2">Compare By</h3>
@@ -382,8 +382,8 @@ const IndustryComparisonTool = () => {
                   <button
                     key={id}
                     className={`px-3 py-2 rounded-lg text-xs text-left transition-colors
-                              ${primaryMetric === id 
-                                ? 'bg-blue-600' 
+                              ${primaryMetric === id
+                                ? 'bg-blue-600'
                                 : 'bg-slate-700 hover:bg-slate-600'}`}
                     onClick={() => setPrimaryMetric(id)}
                   >
@@ -393,7 +393,7 @@ const IndustryComparisonTool = () => {
                 ))}
               </div>
             </div>
-            
+
             {/* View selection */}
             <div>
               <h3 className="text-sm font-medium text-slate-400 mb-2">Chart Type</h3>
@@ -402,8 +402,8 @@ const IndustryComparisonTool = () => {
                   <button
                     key={view.id}
                     className={`px-3 py-2 rounded-lg text-xs flex flex-col items-center justify-center transition-colors
-                              ${comparisonView === view.id 
-                                ? 'bg-blue-600' 
+                              ${comparisonView === view.id
+                                ? 'bg-blue-600'
                                 : 'bg-slate-700 hover:bg-slate-600'}`}
                     onClick={() => setComparisonView(view.id)}
                   >
@@ -417,7 +417,7 @@ const IndustryComparisonTool = () => {
             </div>
           </div>
         </div>
-        
+
         {/* Visualization area */}
         <div className="bg-slate-800 p-6 rounded-lg mb-8">
           <div className="flex justify-between items-center mb-6">
@@ -428,7 +428,7 @@ const IndustryComparisonTool = () => {
               Comparison of {selectedIndustries.length} industries
             </div>
           </div>
-          
+
           <div className="h-80">
             <ResponsiveContainer width="100%" height="100%">
               {comparisonView === 'bar' ? (
@@ -494,17 +494,17 @@ const IndustryComparisonTool = () => {
             </ResponsiveContainer>
           </div>
         </div>
-        
+
         {/* Industry insights */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {selectedIndustries.map(industry => (
-            <div 
-              key={industry} 
+            <div
+              key={industry}
               className="bg-slate-800 rounded-lg p-6 border-t-4"
               style={{ borderColor: industryData[industry].color }}
             >
               <h3 className="text-lg font-bold mb-4">{industryData[industry].name} Insights</h3>
-              
+
               <div className="space-y-4">
                 {industryData[industry].insights.map((insight, index) => (
                   <div key={index} className="flex">
@@ -529,7 +529,7 @@ const IndustryComparisonTool = () => {
                   </div>
                 ))}
               </div>
-              
+
               <div className="mt-6 pt-4 border-t border-slate-700">
                 <div className="flex justify-between items-center text-sm">
                   <div className="text-slate-400">Key Metrics:</div>
@@ -549,6 +549,11 @@ const IndustryComparisonTool = () => {
             </div>
           ))}
         </div>
+      </div>
+
+      <div className="py-4 mt-8 text-center text-slate-400 text-sm">
+        <p>To make this into a full prototype app go to <a href="https://blinkprototype.com" className="text-blue-500 hover:text-blue-400">BlinkPrototype_</a></p>
+        <p>©2025 <a href="https://www.clouddev.group" className="text-blue-500 hover:text-blue-400">Cloud Development Group Limited</a>. All rights reserved.</p>
       </div>
     </div>
   );

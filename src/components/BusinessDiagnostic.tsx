@@ -340,7 +340,7 @@ const BusinessDiagnosticTool: React.FC = () => {
         <h2 className="text-2xl font-bold mb-2">Business Readiness Diagnostic</h2>
         <p className="text-blue-100">Assess your business value and exit readiness</p>
       </div>
-      
+
       {!showResults ? (
         <div className="p-6">
           {/* Progress indicator */}
@@ -350,31 +350,31 @@ const BusinessDiagnosticTool: React.FC = () => {
               <div>Section: {allQuestions[currentQuestion].sectionTitle}</div>
             </div>
             <div className="h-2 bg-slate-700 rounded-full overflow-hidden">
-              <div 
+              <div
                 className={`h-full rounded-full ${allQuestions[currentQuestion].sectionColor}`}
                 style={{ width: `${((currentQuestion + 1) / totalQuestions) * 100}%` }}
               ></div>
             </div>
           </div>
-          
+
           {/* Current question */}
           <div className="bg-slate-800 p-6 rounded-lg mb-8">
             <h3 className="text-xl font-bold mb-6">{allQuestions[currentQuestion].text}</h3>
-            
+
             <div className="space-y-3">
               {allQuestions[currentQuestion].options.map(option => (
                 <button
                   key={option.value}
                   className={`w-full p-4 rounded-lg text-left transition-colors border-2
-                            ${answers[allQuestions[currentQuestion].id] === option.value 
-                              ? `${allQuestions[currentQuestion].sectionColor.replace('bg', 'border')} bg-slate-700` 
+                            ${answers[allQuestions[currentQuestion].id] === option.value
+                              ? `${allQuestions[currentQuestion].sectionColor.replace('bg', 'border')} bg-slate-700`
                               : 'border-slate-700 bg-slate-800 hover:bg-slate-700'}`}
                   onClick={() => handleAnswer(allQuestions[currentQuestion].id, option.value)}
                 >
                   <div className="flex items-center">
                     <div className={`w-6 h-6 rounded-full mr-3 flex items-center justify-center border-2
-                                    ${answers[allQuestions[currentQuestion].id] === option.value 
-                                      ? `${allQuestions[currentQuestion].sectionColor.replace('bg', 'border')} ${allQuestions[currentQuestion].sectionColor}` 
+                                    ${answers[allQuestions[currentQuestion].id] === option.value
+                                      ? `${allQuestions[currentQuestion].sectionColor.replace('bg', 'border')} ${allQuestions[currentQuestion].sectionColor}`
                                       : 'border-slate-600'}`}
                     >
                       {answers[allQuestions[currentQuestion].id] === option.value && <Check size={14} />}
@@ -385,7 +385,7 @@ const BusinessDiagnosticTool: React.FC = () => {
               ))}
             </div>
           </div>
-          
+
           {/* Navigation buttons */}
           <div className="flex justify-between">
             <button
@@ -395,11 +395,11 @@ const BusinessDiagnosticTool: React.FC = () => {
             >
               Previous
             </button>
-            
+
             <div className="text-slate-400 flex items-center">
               {Object.keys(answers).length} of {totalQuestions} answered
             </div>
-            
+
             {currentQuestion === totalQuestions - 1 && Object.keys(answers).length === totalQuestions && (
               <button
                 className="px-6 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors"
@@ -415,15 +415,15 @@ const BusinessDiagnosticTool: React.FC = () => {
           {/* Results overview */}
           <div className="bg-slate-800 p-6 rounded-lg mb-8">
             <h3 className="text-xl font-bold mb-6">Your Business Readiness Score</h3>
-            
+
             <div className="mb-8">
               <div className="text-center mb-4">
                 <div className="text-3xl font-bold mb-2">{scores!.overall.percentage}%</div>
                 <div className="text-sm text-slate-400">Overall Readiness Score</div>
               </div>
-              
+
               <div className="h-3 bg-slate-700 rounded-full overflow-hidden mb-1">
-                <div 
+                <div
                   className={`h-full rounded-full ${
                     scores!.overall.percentage >= 70 ? 'bg-emerald-500' :
                     scores!.overall.percentage >= 40 ? 'bg-amber-500' : 'bg-rose-500'
@@ -431,21 +431,21 @@ const BusinessDiagnosticTool: React.FC = () => {
                   style={{ width: `${scores!.overall.percentage}%` }}
                 ></div>
               </div>
-              
+
               <div className="flex justify-between text-xs text-slate-400">
                 <div>Needs Work</div>
                 <div>Progressing</div>
                 <div>Exit Ready</div>
               </div>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {Object.entries(scores!).map(([key, score]) => {
                 if (key === 'overall') return null;
-                
+
                 // We know all non-overall scores are SectionScore objects
                 const sectionScore = score as SectionScore;
-                
+
                 return (
                   <div key={key} className="bg-slate-700 p-4 rounded-lg">
                     <div className="flex items-center mb-3">
@@ -454,7 +454,7 @@ const BusinessDiagnosticTool: React.FC = () => {
                       </div>
                       <h4 className="font-medium">{sectionScore.title}</h4>
                     </div>
-                    
+
                     <div className="flex items-center justify-between mb-2">
                       <div className="text-2xl font-bold">{sectionScore.percentage}%</div>
                       <div className={`px-2 py-1 rounded-full text-xs ${
@@ -465,9 +465,9 @@ const BusinessDiagnosticTool: React.FC = () => {
                          sectionScore.percentage >= 40 ? 'Moderate' : 'Needs Improvement'}
                       </div>
                     </div>
-                    
+
                     <div className="h-2 bg-slate-600 rounded-full overflow-hidden">
-                      <div 
+                      <div
                         className={sectionScore.color}
                         style={{ width: `${sectionScore.percentage}%` }}
                       ></div>
@@ -477,15 +477,15 @@ const BusinessDiagnosticTool: React.FC = () => {
               })}
             </div>
           </div>
-          
+
           {/* Recommendations */}
           <div className="bg-slate-800 p-6 rounded-lg mb-8">
             <h3 className="text-xl font-bold mb-6">Key Recommendations</h3>
-            
+
             <div className="space-y-4">
               {recommendations!.map((rec, index) => (
-                <div 
-                  key={index} 
+                <div
+                  key={index}
                   className={`p-4 rounded-lg border-l-4 ${
                     rec.priority === 'high' ? 'border-rose-500 bg-rose-500/10' :
                     rec.priority === 'medium' ? 'border-amber-500 bg-amber-500/10' :
@@ -515,20 +515,20 @@ const BusinessDiagnosticTool: React.FC = () => {
               ))}
             </div>
           </div>
-          
+
           {/* Next steps */}
           <div className="bg-gradient-to-r from-blue-600/20 to-indigo-600/20 p-6 rounded-lg">
             <h3 className="text-xl font-bold mb-4">Next Steps</h3>
             <p className="text-slate-300 mb-6">
-              Based on your diagnostic results, our advisors can help you develop a tailored strategy 
+              Based on your diagnostic results, our advisors can help you develop a tailored strategy
               to enhance your business value and prepare for a successful exit.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-4">
               <button className="flex-1 px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg font-medium flex items-center justify-center">
                 Book a Strategy Session <ArrowRight size={18} className="ml-2" />
               </button>
-              
+
               <button className="flex-1 px-6 py-3 bg-slate-700 hover:bg-slate-600 rounded-lg font-medium" onClick={() => {
                 setShowResults(false);
                 setCurrentQuestion(0);
@@ -539,6 +539,11 @@ const BusinessDiagnosticTool: React.FC = () => {
           </div>
         </div>
       )}
+
+      <div className="py-4 mt-8 text-center text-slate-400 text-sm">
+        <p>To make this into a full prototype app go to <a href="https://blinkprototype.com" className="text-blue-500 hover:text-blue-400">BlinkPrototype_</a></p>
+        <p>©2025 <a href="https://www.clouddev.group" className="text-blue-500 hover:text-blue-400">Cloud Development Group Limited</a>. All rights reserved.</p>
+      </div>
     </div>
   );
 };
