@@ -15,10 +15,6 @@ const InteractiveBusinessJourney: React.FC = () => {
         <p className="text-slate-400">The Interactive Business Journey tool will allow you to explore different paths and milestones in your business development.</p>
       </div>
 
-      <div className="py-4 mt-8 text-center text-slate-400 text-sm">
-        <p>To make this into a full prototype app go to <a href="https://blinkprototype.com" className="text-blue-500 hover:text-blue-400">BlinkPrototype_</a></p>
-        <p>©2025 <a href="https://www.clouddev.group" className="text-blue-500 hover:text-blue-400">Cloud Development Group Limited</a>. All rights reserved.</p>
-      </div>
     </div>
   );
 };

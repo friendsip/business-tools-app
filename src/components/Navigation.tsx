@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { Menu, X, Calculator, BarChart2, TrendingUp, Activity, Briefcase, LineChart, Zap } from 'lucide-react';
 
 interface NavigationItem {
@@ -92,7 +92,9 @@ const Navigation: React.FC = () => {
       {/* Mobile menu button */}
       <div className="fixed top-0 left-0 z-40 w-full bg-slate-800 lg:hidden">
         <div className="px-4 py-3 flex justify-between items-center">
-          <h1 className="text-xl font-bold text-white">Business Tools</h1>
+          <Link to="/" className="hover:opacity-80 transition-opacity">
+            <h1 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-400 to-pink-500">App Ideas</h1>
+          </Link>
           <button
             onClick={toggleMenu}
             className="p-2 rounded-md text-slate-400 hover:bg-slate-700 hover:text-white"
@@ -106,7 +108,9 @@ const Navigation: React.FC = () => {
       <div className="hidden lg:flex lg:w-72 lg:flex-col lg:fixed lg:inset-y-0">
         <div className="flex flex-col flex-grow bg-slate-800 overflow-y-auto">
           <div className="flex items-center h-16 px-4">
-            <h1 className="text-xl font-bold text-white">Business Tools</h1>
+            <Link to="/" className="hover:opacity-80 transition-opacity">
+              <h1 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-400 to-pink-500">App Ideas</h1>
+            </Link>
           </div>
           <div className="flex-1 flex flex-col overflow-y-auto px-3 py-4 space-y-6">
             <div>
@@ -151,7 +155,9 @@ const Navigation: React.FC = () => {
               </button>
             </div>
             <div className="flex items-center h-16 px-4 border-b border-slate-700">
-              <h1 className="text-xl font-bold text-white">Business Tools</h1>
+              <Link to="/" className="hover:opacity-80 transition-opacity" onClick={toggleMenu}>
+                <h1 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-400 to-pink-500">App Ideas</h1>
+              </Link>
             </div>
             <div className="flex-1 h-0 overflow-y-auto px-3 py-4 space-y-6">
               <div>

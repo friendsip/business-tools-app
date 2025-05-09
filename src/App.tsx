@@ -21,7 +21,19 @@ const LoadingFallback = () => (
 const App: React.FC = () => {
   return (
     <BrowserRouter>
-      <div className="flex flex-col min-h-screen bg-slate-900 text-white">
+      <div className="flex flex-col min-h-screen bg-slate-900 text-white relative overflow-hidden">
+        <video
+          autoPlay
+          loop
+          muted
+          className="absolute top-0 left-0 w-full h-full object-cover z-0 opacity-75"
+          style={{ filter: 'brightness(0.6)' }}
+        >
+          <source src="/hub9.m4v" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <div className="absolute inset-0 bg-slate-900/30 z-0"></div>
+        <div className="relative z-10 flex flex-col min-h-screen">
         <Navigation />
         <div className="flex-1 lg:ml-72 pt-16 lg:pt-0">
           <Suspense fallback={<LoadingFallback />}>
@@ -36,10 +48,11 @@ const App: React.FC = () => {
               <Route path="/success-stories" element={<SuccessStories />} />
             </Routes>
           </Suspense>
-          <div className="py-4 px-6 mt-8 text-center text-slate-400 text-sm">
-            <p>To make this into a full prototype app go to <a href="https://blinkprototype.com" className="text-blue-500 hover:text-blue-400">BlinkPrototype_</a></p>
-            <p>©2025 <a href="https://www.clouddev.group" className="text-blue-500 hover:text-blue-400">Cloud Development Group Limited</a>. All rights reserved.</p>
+          <div className="py-4 px-6 mt-8 text-center text-white text-sm text-shadow">
+            <p className="drop-shadow-md">To make this into a full prototype app go to <a href="https://blinkprototype.com" className="text-blue-300 hover:text-blue-200">BlinkPrototype_</a></p>
+            <p className="drop-shadow-md">©2025 <a href="https://www.clouddev.group" className="text-blue-300 hover:text-blue-200">Cloud Development Group Limited</a>. All rights reserved.</p>
           </div>
+        </div>
         </div>
       </div>
     </BrowserRouter>

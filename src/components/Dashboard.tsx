@@ -40,13 +40,6 @@ const Dashboard: React.FC = () => {
       category: 'visualization'
     },
     {
-      name: 'Client Journey',
-      description: 'Explore the typical client journey through the M&A process',
-      icon: <Users size={24} className="text-amber-400" />,
-      path: '/day-in-life',
-      category: 'journey'
-    },
-    {
       name: 'Personalized Journey',
       description: 'Get personalized guidance based on your business profile and goals',
       icon: <Zap size={24} className="text-amber-400" />,
@@ -54,10 +47,10 @@ const Dashboard: React.FC = () => {
       category: 'journey'
     },
     {
-      name: 'Business Journey',
-      description: 'Interactive business journey visualization and planning tool',
+      name: 'Success Stories',
+      description: 'Explore success stories and case studies from our clients',
       icon: <Briefcase size={24} className="text-amber-400" />,
-      path: '/interactive-business-journey',
+      path: '/success-stories',
       category: 'journey'
     }
   ];
@@ -65,10 +58,9 @@ const Dashboard: React.FC = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-white mb-4">Business Advisory Tools</h1>
+        <h1 className="text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-400 to-pink-500 pb-1">Ideas for Apps</h1>
         <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-          Explore our comprehensive suite of interactive tools designed to help you assess,
-          plan, and optimize your business journey
+          Explore some interactive tools build with AI as part of a demonstration by Mark T - 8th May 2025
         </p>
       </div>
 
@@ -77,7 +69,7 @@ const Dashboard: React.FC = () => {
           <Link
             key={tool.path}
             to={tool.path}
-            className="bg-slate-800 rounded-lg p-6 hover:bg-slate-700 transition-colors border border-slate-700 hover:border-blue-500"
+            className="bg-slate-800/60 backdrop-blur-md rounded-lg p-6 hover:bg-slate-700/70 transition-colors border border-slate-700/60 hover:border-blue-500 shadow-lg"
           >
             <div className="flex items-start">
               <div className="mt-1 mr-4">
@@ -92,10 +84,6 @@ const Dashboard: React.FC = () => {
         ))}
       </div>
 
-      <div className="py-4 mt-12 text-center text-slate-400 text-sm">
-        <p>To make this into a full prototype app go to <a href="https://blinkprototype.com" className="text-blue-500 hover:text-blue-400">BlinkPrototype_</a></p>
-        <p>©2025 <a href="https://www.clouddev.group" className="text-blue-500 hover:text-blue-400">Cloud Development Group Limited</a>. All rights reserved.</p>
-      </div>
     </div>
   );
 };
